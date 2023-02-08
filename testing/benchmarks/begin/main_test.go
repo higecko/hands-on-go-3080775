@@ -1,6 +1,19 @@
 // testing/benchmarks/begin/main_test.go
 package main
 
-// write a benchmark for sum
+import "testing"
+
+// write a benchmark for
+func BenchmarkSum(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		sum(1, 2, 3)
+	}
+}
 
 // write a benchmark for sumAny
+func BenchmarkSumAny(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		sumAny([]interface{}{1, 2, 3})
+	}
+
+}

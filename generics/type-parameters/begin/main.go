@@ -12,7 +12,11 @@ func sumFloats(a, b float64) float64 {
 }
 
 // create generic sum function with type parameter T constrained to int and float64 types
-//
+func sum[T ~int | ~float64](a,b T) T {
+	return a + b
+}
+
+type specialInt int
 
 func main() {
 	// non-generic sum int function
@@ -22,10 +26,14 @@ func main() {
 	fmt.Println(sumFloats(1.3, 2.2))
 
 	// call on generic sum function
-	//
+	fmt.Println(sum[int](1, 2))
+	fmt.Println(sum[float64](1.3, 2.5))
 
 	// define a compatible custom type call on generic sum function with it
-	//
+	a := specialInt(3)
+	b := specialInt(4)
+	fmt.Println(sum(a,b))
+	
 }
 
 // list is a singly-linked list that holds values of any type

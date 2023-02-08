@@ -9,12 +9,19 @@ import (
 func main() {
 	os := runtime.GOOS
 
-	// refactor with switch statement
-	if os == "linux" || os == "darwin" || os == "unix" {
-		fmt.Println("*nix variant")
-	} else if os == "windows" {
+	// // refactor with switch statement
+	// if os == "linux" || os == "darwin" || os == "unix" {
+	// 	fmt.Println("*nix variant")
+	// } else if os == "windows" {
+	// 	fmt.Println("Windows")
+	// } else {
+	// 	fmt.Printf("%s.\n", os)
+	// }
+
+	switch os {
+	case "linux", "darwin", "unix":
+		fmt.Println("*ix variant")
+	case "windows":
 		fmt.Println("Windows")
-	} else {
-		fmt.Printf("%s.\n", os)
 	}
 }

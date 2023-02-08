@@ -1,9 +1,15 @@
 // generics/standard-library/begin/main.go
 package main
 
+import (
+	"fmt"
+
+	"golang.org/x/exp/constraints"
+)
+
 // create a numeric interface with a type set
 type numeric interface {
-	~int | ~float64
+	constraints.Integer | constraints.Float
 	grow()
 }
 
@@ -17,12 +23,14 @@ type specialInt int
 func (s specialInt) grow() {}
 
 // equal returns true if a and b are equal.
-//
+func equal[T comparable](a, b T) bool {
+	return a == b
+}
 
 func main() {
 	// invoke equal with comparable types
-	// fmt.Println("equal(1, 1):", equal(1, 1))
-	// fmt.Println("equal(\"one\", \"two\"):", equal("one", "two"))
+	fmt.Println("equal(1, 1):", equal(1, 1))
+	fmt.Println("equal(\"one\", \"two\"):", equal("one", "two"))
 
 	// invoke equal with a custom type
 	// type c struct{ f string }
